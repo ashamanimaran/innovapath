@@ -1,0 +1,27 @@
+
+        <div class="modal-header">
+            <h3 class="modal-title">I'm a modal!</h3>
+        </div>
+        <div class="modal-body" ng-init="info.accType='light';hideOptions=true">
+         FirstName:<input type="text" ng-model="info.firstName"/><br/>
+         LastName:<input type="text" ng-model="info.lastName"/><br/>
+         Email:<input type="text" ng-model="info.email"/><br/>
+         Account type:<input type="text" ng-model="info.accType"/>
+         <input type="button" value="Upgrade Account" ng-click="upgradeAccount()"/>
+         <div ng-class="{ 'ng-hide': hideOptions}">
+         <ul>
+        <li ng-repeat="option in options">
+        <input type="checkbox" checklist-model="selectedOptions.options" checklist-value="option"> {{option}}
+        </li>
+        </ul>        
+          <input type="button" value="Purchase" ng-click="setAccTypeStandardPlus()"/>
+          <input type="button" value="Cancel Upgrade" ng-click="setAccTypeLight()"
+         </div>
+        
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+
+
