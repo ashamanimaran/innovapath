@@ -1,0 +1,10 @@
+#row1-col1{
+    background-color:bisque;
+}
+#row1-col2{
+    background-color:darkgoldenrod;
+}
+.container{
+    margin-top: 100px;
+    background-color:black;
+}
