@@ -1,0 +1,1 @@
+to avoid global namespace pollution put your all your realted functions in a module and attach the module to the global window object

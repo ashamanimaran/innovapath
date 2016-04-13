@@ -1,0 +1,15 @@
+Remember: only use shim config for non-AMD scripts,
+scripts that do not already call define(). The shim
+config will not work correctly if used on AMD scripts.
+The Shim configuration is a much needed upgrade to the Require.js core that allows Require.js to load non-AMD compatible scripts.  you can have a shim configuration in your main file like this:
+
+   // Sets the configuration for your third party scripts that are not AMD compatible
+  shim: {
+
+      "backbone": {
+          deps: ["underscore", "jquery"],
+          exports: "Backbone"  //attaches "Backbone" to the window object
+      }
+
+  } // end Shim Configuration
+ 
