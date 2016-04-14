@@ -1,0 +1,14 @@
+Pick your geolocation provider - some are "faster" than others - pick one that makes an api call so that you don't have to maintain your own geolocation database.
+ From the results you'll be able to get a short country code. Then on your script all you have to do is
+
+<img src="/images/banner<?php echo $countryCode; ?>.png">
+Code (markup):and it will automatically go and find the right banner. 
+In my case it would look for bannerNZ
+
+
+get an api key by creating a project and enabling google api at
+https://console.cloud.google.com/start
+
+c:\Users\Asha Manimaran\Documents\visualstudiocode\HTLML5codingPractice\geolocation>typings install modernizr --ambient
+modernizr
+
