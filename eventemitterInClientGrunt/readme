@@ -1,0 +1,90 @@
+
+Grunt has recently been split into a project-local dependency (grunt) and a command-line launcher (grunt-cli).
+ It's the latter that should be installed globally.
+
+As an extra hint on ensuring that you can take your builds everywhere:
+ make sure you save all dependencies in package.json, 
+ by using the --save and --save-dev parameters when using npm install
+ 
+ 
+ All grunt-cli does is launch the grunt version that's embedded in your project. 
+ 
+
+How the CLI works
+
+Each time grunt is run, it looks for a locally installed Grunt using node's require() system. 
+Because of this, you can run grunt from any subfolder in your project.
+
+If a locally installed Grunt is found, the CLI loads the local installation of the Grunt library, 
+applies the configuration from your Gruntfile, and executes any tasks you've requested for it to run.
+
+1.npm install -g grunt-cli
+2.npm init
+3.npm install grunt --save
+4.create jsconfig.json 
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "commonjs"
+    }
+    
+}
+5.typings install gruntjs --ambient
+6.create gruntfile.ts
+module.exports=function (grunt:IGrunt) {
+    grunt.initConfig........you will get intellisense
+}
+7.compile gruntfile.ts to gruntfile.js  from commandline- tsc gruntfile.ts
+8.grunt uglify:dist ----will create allfiles.min.js
+
+9. npm install browserify --save
+10. npm install grunt-browserify --save
+11.grunt browserfy:main ---will create bundle.js
+
+grunt-express-server:Grunt task for running an Express Server that works great with LiveReload + Watch/Regarde
+
+write a default task that runs express-server followed by watch
+
+module.exports = function (grunt:IGrunt) {
+   grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-browserify');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+grunt.loadNpmTasks('grunt-express-server');
+
+    grunt.initConfig({
+        uglify: {
+            dist: {
+                src: ["myemitter.js", "app.js"],
+                dest: "allfiles-min.js"
+            }
+        },
+        browserify: {
+            main: {
+                src: 'allfiles-min.js',
+                dest: 'bundle.js'
+            }            
+        },
+        watch: {
+                files: ["myemitter.js", "app.js"],
+                tasks: ['uglify:dist', 'browserify:main']
+            },
+            express: {
+            dev: {
+                options: {
+                    script: 'server.js',
+                }
+            }
+            }
+ });
+grunt.registerTask('default', '', function() {
+    var taskList = [
+        'express',
+        'watch'
+    ];
+    grunt.task.run(taskList);
+});
+};
+
+12.type grunt in commandline!!!!!!!!!!!!!!your program will be continuously built and deployed
+
+
